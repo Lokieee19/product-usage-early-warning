@@ -1,0 +1,17 @@
+{
+  "model_version": "lgbm-20260928T130640Z-v1",
+  "feature_snapshot_ts": "2026-09-28",
+  "risk_ranking_quality_auc": 1.0,
+  "attribution_coverage": 1.0,
+  "p95_latency_ms": 4.000305112916976,
+  "drift_alert_accuracy": 0.6923076923076923,
+  "play_effectiveness": {
+    "churn_rate_with_play": 0.30612244897959184,
+    "churn_rate_without_play": 0.6190476190476191
+  },
+  "gate_checks": {
+    "ranking_quality_ok": true,
+    "drift_monitor_validated": true
+  },
+  "gate": "passed"
+}

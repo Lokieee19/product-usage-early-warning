@@ -1,0 +1,46 @@
+{
+  "model_version": "lgbm-20260928T130640Z-v1",
+  "transform_version": "v1",
+  "trained_at": "2026-09-28T13:06:41.036838+00:00",
+  "n_train_rows": 4800,
+  "n_holdout_rows": 600,
+  "train_dates": [
+    "2026-06-01",
+    "2026-06-08",
+    "2026-06-15",
+    "2026-06-22",
+    "2026-06-29",
+    "2026-07-06",
+    "2026-07-13",
+    "2026-07-20",
+    "2026-07-27",
+    "2026-08-03",
+    "2026-08-10",
+    "2026-08-17",
+    "2026-08-24",
+    "2026-08-31",
+    "2026-09-07",
+    "2026-09-14"
+  ],
+  "holdout_dates": [
+    "2026-09-21",
+    "2026-09-28"
+  ],
+  "auc_train": 1.0,
+  "auc_holdout": 1.0,
+  "feature_importance": {
+    "logins_per_seat_trend_3m": 0,
+    "searches_per_seat_trend_3m": 0,
+    "inmail_sends_trend_3m": 0,
+    "pct_seats_active_30d": 45,
+    "crm_sync_active_30d": 0,
+    "avg_session_duration_trend": 0,
+    "inmail_response_rate": 19,
+    "support_tickets_90d": 8,
+    "support_csat": 22,
+    "champion_turnover_flag": 0,
+    "seat_utilization_vs_contracted": 25,
+    "days_to_renewal": 0,
+    "nps_last_survey": 0
+  }
+}

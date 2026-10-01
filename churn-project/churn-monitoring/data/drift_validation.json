@@ -1,0 +1,73 @@
+{
+  "as_of_date": "2026-09-28",
+  "perturbed_features": [
+    "champion_turnover_flag",
+    "support_tickets_90d",
+    "searches_per_seat_trend_3m",
+    "support_csat",
+    "avg_session_duration_trend"
+  ],
+  "untouched_features": [
+    "logins_per_seat_trend_3m",
+    "inmail_sends_trend_3m",
+    "pct_seats_active_30d",
+    "crm_sync_active_30d",
+    "inmail_response_rate",
+    "seat_utilization_vs_contracted",
+    "days_to_renewal",
+    "nps_last_survey"
+  ],
+  "true_positives": 4,
+  "false_negatives": 1,
+  "true_negatives": 5,
+  "false_positives": 3,
+  "recall": 0.8,
+  "specificity": 0.625,
+  "drift_alert_accuracy": 0.6923076923076923,
+  "detail": {
+    "logins_per_seat_trend_3m": {
+      "psi": 0.0335,
+      "alert": false
+    },
+    "searches_per_seat_trend_3m": {
+      "psi": 12.4339,
+      "alert": true
+    },
+    "inmail_sends_trend_3m": {
+      "psi": 0.0241,
+      "alert": false
+    },
+    "pct_seats_active_30d": {
+      "psi": 0.0424,
+      "alert": false
+    },
+    "avg_session_duration_trend": {
+      "psi": 12.4339,
+      "alert": true
+    },
+    "inmail_response_rate": {
+      "psi": 0.043,
+      "alert": false
+    },
+    "support_tickets_90d": {
+      "psi": 11.0524,
+      "alert": true
+    },
+    "support_csat": {
+      "psi": 12.4339,
+      "alert": true
+    },
+    "seat_utilization_vs_contracted": {
+      "psi": 0.4156,
+      "alert": true
+    },
+    "days_to_renewal": {
+      "psi": 0.3203,
+      "alert": true
+    },
+    "nps_last_survey": {
+      "psi": 0.4218,
+      "alert": true
+    }
+  }
+}

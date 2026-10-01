@@ -1,0 +1,58 @@
+{
+  "as_of_date": "2026-09-28",
+  "model_version": "lgbm-20260928T130640Z-v1",
+  "alert_threshold": 0.2,
+  "feature_psi": {
+    "logins_per_seat_trend_3m": {
+      "psi": 0.0335,
+      "alert": false
+    },
+    "searches_per_seat_trend_3m": {
+      "psi": 0.0824,
+      "alert": false
+    },
+    "inmail_sends_trend_3m": {
+      "psi": 0.0241,
+      "alert": false
+    },
+    "pct_seats_active_30d": {
+      "psi": 0.0424,
+      "alert": false
+    },
+    "avg_session_duration_trend": {
+      "psi": 0.0307,
+      "alert": false
+    },
+    "inmail_response_rate": {
+      "psi": 0.043,
+      "alert": false
+    },
+    "support_tickets_90d": {
+      "psi": 0.0866,
+      "alert": false
+    },
+    "support_csat": {
+      "psi": 0.1129,
+      "alert": false
+    },
+    "seat_utilization_vs_contracted": {
+      "psi": 0.4156,
+      "alert": true
+    },
+    "days_to_renewal": {
+      "psi": 0.3203,
+      "alert": true
+    },
+    "nps_last_survey": {
+      "psi": 0.4218,
+      "alert": true
+    }
+  },
+  "n_features_alerting": 3,
+  "alerting_features": [
+    "seat_utilization_vs_contracted",
+    "days_to_renewal",
+    "nps_last_survey"
+  ],
+  "band_population_psi": 2.264041430927955
+}

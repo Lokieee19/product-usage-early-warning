@@ -1,0 +1,92 @@
+# plays.yaml
+#
+# Phase 3: score -> play mapping, versioned as data rather than baked into
+# the model artifact, so it can be retuned without retraining. policy.py
+# picks a play by (band, top_signal_feature) - band decides urgency, the
+# top SHAP-contributing feature decides which playbook fits.
+#
+# `default` is used when no more specific (band, signal) rule matches.
+
+version: 1
+
+plays:
+  usage_decay:
+    name: Usage recovery
+    steps:
+      - Contact account within 3 days
+      - Review abandoned features with the account team
+      - Offer a product enablement session
+
+  low_seat_utilization:
+    name: Seat utilization review
+    steps:
+      - Audit which teams/seats are inactive
+      - Propose a seat rebalance or true-up conversation
+      - Share a usage benchmark vs similar accounts
+
+  feature_abandonment:
+    name: Feature re-engagement
+    steps:
+      - Identify which core workflows dropped off
+      - Send a targeted feature walkthrough
+      - Offer a workflow audit call
+
+  support_friction:
+    name: Support escalation review
+    steps:
+      - Escalate open tickets to a senior support engineer
+      - Schedule a CSAT recovery call with the account
+      - Flag account to CS leadership for visibility
+
+  champion_turnover:
+    name: Re-establish champion relationship
+    steps:
+      - Identify the new day-to-day contact
+      - Schedule a relationship-rebuilding intro call
+      - Re-share onboarding/value materials with the new champion
+
+  crm_sync_disabled:
+    name: Restore CRM sync
+    steps:
+      - Confirm why CRM sync was disabled with IT/admin contact
+      - Walk the admin through re-enabling sync
+      - Monitor sync status for 30 days after fix
+
+  low_nps:
+    name: NPS recovery outreach
+    steps:
+      - Follow up personally on the low NPS response
+      - Document the root complaint
+      - Route to the right team (support/product/CS) for resolution
+
+  renewal_urgency:
+    name: Renewal risk escalation
+    steps:
+      - Loop in the account executive immediately
+      - Prepare a renewal risk brief for leadership
+      - Schedule an executive-to-executive check-in before renewal
+
+  default:
+    name: Monitor
+    steps:
+      - No urgent signal - keep on standard monitoring cadence
+      - Re-check at next weekly scoring run
+
+# Maps a top-contributing feature name (see churn-scoring/feature_labels.py)
+# to the play key above. Bands map to a minimum urgency floor: Critical/High
+# always get a play from this table; Medium/Low get "default" unless the
+# feature signal is unusually strong (handled in policy.py).
+signal_to_play:
+  logins_per_seat_trend_3m: usage_decay
+  avg_session_duration_trend: usage_decay
+  searches_per_seat_trend_3m: feature_abandonment
+  inmail_sends_trend_3m: feature_abandonment
+  inmail_response_rate: feature_abandonment
+  pct_seats_active_30d: low_seat_utilization
+  seat_utilization_vs_contracted: low_seat_utilization
+  support_tickets_90d: support_friction
+  support_csat: support_friction
+  champion_turnover_flag: champion_turnover
+  crm_sync_active_30d: crm_sync_disabled
+  nps_last_survey: low_nps
+  days_to_renewal: renewal_urgency

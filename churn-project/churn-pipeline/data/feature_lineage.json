@@ -1,0 +1,107 @@
+{
+  "transform_version": "v1",
+  "generated_for_as_of_dates": [
+    "2026-06-01",
+    "2026-06-08",
+    "2026-06-15",
+    "2026-06-22",
+    "2026-06-29",
+    "2026-07-06",
+    "2026-07-13",
+    "2026-07-20",
+    "2026-07-27",
+    "2026-08-03",
+    "2026-08-10",
+    "2026-08-17",
+    "2026-08-24",
+    "2026-08-31",
+    "2026-09-07",
+    "2026-09-14",
+    "2026-09-21",
+    "2026-09-28"
+  ],
+  "features": {
+    "logins_per_seat_trend_3m": {
+      "source_events": [
+        "login",
+        "seat_active_count"
+      ],
+      "transform": "pct change in (login sum / avg active seats) over a 30d window vs the same window 90d earlier"
+    },
+    "searches_per_seat_trend_3m": {
+      "source_events": [
+        "search",
+        "seat_active_count"
+      ],
+      "transform": "pct change in (search sum / avg active seats), recent 30d vs 30d window 90d earlier"
+    },
+    "inmail_sends_trend_3m": {
+      "source_events": [
+        "inmail_send",
+        "seat_active_count"
+      ],
+      "transform": "pct change in (inmail_send sum / avg active seats), recent 30d vs 30d window 90d earlier"
+    },
+    "pct_seats_active_30d": {
+      "source_events": [
+        "seat_active_count"
+      ],
+      "transform": "avg active seats over trailing 30d / seats_contracted"
+    },
+    "crm_sync_active_30d": {
+      "source_events": [
+        "crm_sync_status"
+      ],
+      "transform": "most recent crm_sync_status value in trailing 30d (null if no event)"
+    },
+    "avg_session_duration_trend": {
+      "source_events": [
+        "session_duration_min"
+      ],
+      "transform": "pct change in avg session_duration_min, recent 30d vs 30d window 90d earlier"
+    },
+    "inmail_response_rate": {
+      "source_events": [
+        "inmail_send",
+        "inmail_reply"
+      ],
+      "transform": "sum(inmail_reply) / sum(inmail_send) over trailing 90d"
+    },
+    "support_tickets_90d": {
+      "source_events": [
+        "support_ticket"
+      ],
+      "transform": "count of support_ticket events in trailing 90d"
+    },
+    "support_csat": {
+      "source_events": [
+        "support_csat"
+      ],
+      "transform": "mean support_csat value in trailing 90d"
+    },
+    "champion_turnover_flag": {
+      "source_events": [
+        "champion_turnover"
+      ],
+      "transform": "1 if any champion_turnover event in trailing 180d, else 0"
+    },
+    "seat_utilization_vs_contracted": {
+      "source_events": [
+        "seat_active_count"
+      ],
+      "transform": "most recent active seat count as of as_of_date / seats_contracted"
+    },
+    "days_to_renewal": {
+      "source_events": [
+        "accounts.renewal_date"
+      ],
+      "transform": "renewal_date - as_of_date, in days"
+    },
+    "nps_last_survey": {
+      "source_events": [
+        "nps_survey"
+      ],
+      "transform": "most recent nps_survey value in trailing 180d (null if none)"
+    }
+  }
+}
